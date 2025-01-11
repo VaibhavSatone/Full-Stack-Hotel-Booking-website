@@ -1,0 +1,142 @@
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookings</title>
+    <style>
+        :root{
+    --maincolor:#0000ff;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: .3s linear; 
+    text-decoration: none;
+    text-transform: capitalize;
+    outline: none;
+}
+
+html{
+    font-size: 62.5%;
+}
+
+.header{
+    padding: 1rem 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    background-color: white;
+    opacity: 1;
+    z-index: 2;
+    top: 0;
+    right: 0;
+    left: 0;
+    box-shadow: 0 .5rem .5rem rgba(10, 10, 10, 0.1);
+
+}
+.header #logo img{
+    width: 65px;
+}
+
+.header .navbar a{
+    font-size: 1.7rem;
+    margin-left: 1.5rem;
+    color: var(--maincolor);   
+}
+
+.header .navbar a:hover{
+   color: orangered;px
+}
+
+.inline{
+    display: flex;
+}
+
+.btn{
+    
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    margin-left: 2rem;
+    padding: 9px 20px 9px 20px;
+    font-size: 13px;
+border-radius: 4px;
+background-color: rgba(29, 12, 104, 0.7);
+border: 1px solid rgba(218, 208, 208, 0.3);
+}
+
+.drop a{
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 0px 9px 0px 8px;
+}
+
+.drop .content{
+    display: none;
+    position: absolute;
+    cursor: pointer;
+    padding: 9px 20px 9px 20px;
+    margin-left: 2rem;
+    font-size: 13px;
+border-radius: 4px;
+background-color: rgba(29, 12, 104, 0.7);
+border: 1px solid rgba(218, 208, 208, 0.3);
+}
+
+.drop:hover .content{
+    display: block;
+}
+#sign{
+    margin-left: 2rem;
+    border-radius: 4px;
+    background-color: rgba(29, 12, 104, 0.7);
+    border: 1px solid rgba(218, 208, 208, 0.3);
+    color: white;
+    cursor: pointer;
+    padding: 7px 17px 7px 17px;
+    font-size: 16px;
+    font-weight: 500;
+    }
+
+.header .inline button:hover{
+    color: orangered;
+} 
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f8f8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+    </style>
+ </head>
+ <body>
+    <header class="header">
+        <a href="#" id="logo"><img src="images/logo.jpg" alt=""></a>
+        <nav class="navbar">
+            <a href="lodge.html">home</a>
+            <a href="#">bookings</a>
+            <a href="city.html">city</a>
+            <a href="contact.html">contact</a>           
+        </nav>
+        <div class="inline"><div class="drop">
+         <button class="btn">English</button>
+         <div class="content">
+            <a href="">Hindi</a>
+         </div></div>   
+     <div><button id="sign" >Sign In</button>
+     </div></div>
+    </header>
+    <div class="main">
+        <h1>No Recent Bookings</h1>
+    </div>
+ </body>
+ </html>

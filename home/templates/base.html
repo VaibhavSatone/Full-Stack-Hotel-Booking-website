@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+{%load static%}
+<html lang="en">
+  <head>
+    <title>hotel booking</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Header */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+        }
+
+        #logo img {
+            height: 50px;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 16px;
+        }
+
+        .navbar a:hover {
+            text-decoration: underline;
+        }
+
+        .inline {
+            display: flex;
+            align-items: center;
+        }
+
+        .drop {
+            position: relative;
+            margin-right: 10px;
+        }
+
+        .btn {
+            background-color: #555;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #777;
+        }
+
+        .content {
+            display: none;
+            position: absolute;
+            top: 30px;
+            background-color: white;
+            border: 1px solid #ccc;
+            z-index: 1;
+        }
+
+        .content a {
+            display: block;
+            padding: 5px 10px;
+            color: black;
+            text-decoration: none;
+        }
+
+        .content a:hover {
+            background-color: #f1f1f1;
+        }
+
+        .drop:hover .content {
+            display: block;
+        }
+
+        #sign {
+            background-color: #ff5a5a;
+            color: white;
+            border: none;
+            padding: 5px 15px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        #sign:hover {
+            background-color: #ff7575;
+        }
+
+        /* Main Background */
+        .main-background {
+            background-color: #f5f5f5;
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .book-section {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            display: inline-block;
+        }
+
+        .inner-book span {
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+        .inner-book input {
+            margin: 10px;
+            padding: 5px;
+            font-size: 14px;
+        }
+
+        .book-btn a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #ff5a5a;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .book-btn a:hover {
+            background-color: #ff7575;
+        }
+
+        /* Award Winning Hotel Section */
+        .award-winning-hotel {
+            margin: 50px 20px;
+        }
+
+        .award-winning-hotel h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .main-hotel {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .inner-award {
+            text-align: center;
+            margin: 20px;
+        }
+
+        .inner-award img {
+            width: 200px;
+            height: 150px;
+            border-radius: 8px;
+        }
+
+        .inner-award h2 {
+            margin-top: 10px;
+            font-size: 18px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .que {
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+{% block content %}
+{% endblock  %}
+</body>
+</html>

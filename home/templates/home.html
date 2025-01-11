@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<header class="header">
+    <a href="#" id="logo"><img src="{% static 'images/logo.jpg' %}" alt="HostHarbor Logo"></a>
+    <nav class="navbar">
+        <a href="{% url 'home' %}">home</a>
+        <a href="{% static   'bookings.html' %}">bookings</a>
+        <a href="{% static 'city.html' %}">city</a>
+        <a href="{% static 'contact.html' %}">contact</a>
+    </nav>
+    <div class="inline">
+        <div class="drop">
+            <button class="btn">English</button>
+            <div class="content">
+                <a href="#">Hindi</a>
+            </div>
+        </div>
+        <button id="sign"><a href="signin.html">Sign In</button>
+    </div>
+</header>
+
+<div class="main-background">
+    <div class="book-section">
+        <div class="inner-book">
+            <span>From</span>
+            <input type="date">
+            <span>To</span>
+            <input type="date">
+            <input type="text" placeholder="Choose no. of rooms">
+            <div class="book-btn">
+                <a href="{% static 'city.html' %}">Book Now</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="award-winning-hotel">
+    <h1>Available in Multiple Cities</h1>
+    <div class="main-hotel">
+        <div class="inner-award">
+            <img src="{% static 'images/mumbai.webp' %}" alt="Mumbai">
+            <h2>Mumbai</h2>
+        </div>
+        <div class="inner-award">
+            <img src="{% static 'images/pun.jpg' %}" alt="Pune">
+            <h2>Pune</h2>
+        </div>
+        <!-- Repeat for other cities -->
+    </div>
+</div>
+
+<div class="separation"></div>
+<footer>
+    <div class="que">Questions? Call 000-800-919-1694</div>
+    <div class="footer">
+        <!-- Footer Content -->
+    </div>
+</footer>
+<script src="{% static 'lodg.js' %}"></script>
+{% endblock %}
