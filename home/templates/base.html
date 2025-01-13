@@ -4,181 +4,226 @@
   <head>
     <title>hotel booking</title>
     <style>
-        /* General Styles */
-        body {
-            font-family: Arial, sans-serif;
+        :root{
+            --maincolor:#0000ff;
+        }
+        *{
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            transition: .3s linear; 
+            text-decoration: none;
+            text-transform: capitalize;
+            outline: none;
         }
-
-        /* Header */
-        .header {
+        
+        html{
+            font-size: 62.5%;
+        }
+        
+        .header{
+            padding: 1rem 7%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background-color: #333;
+            position: fixed;
+            background-color: white;
+            opacity: 1;
+            z-index: 2;
+            top: 0;
+            right: 0;
+            left: 0;
+            box-shadow: 0 .5rem .5rem rgba(10, 10, 10, 0.1);
+        
+        }
+        .header #logo img{
+            width: 65px;
+        }
+        
+        .header .navbar a{
+            font-size: 1.7rem;
+            margin-left: 1.5rem;
+            color: var(--maincolor);   
+        }
+        
+        .header .navbar a:hover{
+           color: orangered;px
+        }
+        
+        .inline{
+            display: flex;
+        }
+        
+        .btn{
+            
+            font-weight: bold;
             color: white;
-            padding: 10px 20px;
+            cursor: pointer;
+            margin-left: 2rem;
+            padding: 9px 20px 9px 20px;
+            font-size: 13px;
+        border-radius: 4px;
+        background-color: rgba(29, 12, 104, 0.7);
+        border: 1px solid rgba(218, 208, 208, 0.3);
         }
-
-        #logo img {
-            height: 50px;
-        }
-
-        .navbar a {
+        
+        .drop a{
+            display: block;
             color: white;
             text-decoration: none;
-            margin: 0 10px;
-            font-size: 16px;
+            padding: 0px 9px 0px 8px;
         }
-
-        .navbar a:hover {
-            text-decoration: underline;
-        }
-
-        .inline {
-            display: flex;
-            align-items: center;
-        }
-
-        .drop {
-            position: relative;
-            margin-right: 10px;
-        }
-
-        .btn {
-            background-color: #555;
-            color: white;
-            border: none;
-            padding: 5px 10px;
-            cursor: pointer;
-        }
-
-        .btn:hover {
-            background-color: #777;
-        }
-
-        .content {
+        
+        .drop .content{
             display: none;
             position: absolute;
-            top: 30px;
-            background-color: white;
-            border: 1px solid #ccc;
-            z-index: 1;
-        }
-
-        .content a {
-            display: block;
-            padding: 5px 10px;
-            color: black;
-            text-decoration: none;
-        }
-
-        .content a:hover {
-            background-color: #f1f1f1;
-        }
-
-        .drop:hover .content {
-            display: block;
-        }
-
-        #sign {
-            background-color: #ff5a5a;
-            color: white;
-            border: none;
-            padding: 5px 15px;
             cursor: pointer;
-            font-size: 14px;
+            padding: 9px 20px 9px 20px;
+            margin-left: 2rem;
+            font-size: 13px;
+        border-radius: 4px;
+        background-color: rgba(29, 12, 104, 0.7);
+        border: 1px solid rgba(218, 208, 208, 0.3);
         }
-
-        #sign:hover {
-            background-color: #ff7575;
+        
+        .drop:hover .content{
+            display: block;
         }
-
-        /* Main Background */
-        .main-background {
-            background-color: #f5f5f5;
-            padding: 50px 20px;
-            text-align: center;
-        }
-
-        .book-section {
-            background-color: white;
-            padding: 20px;
-            border-radius: 8px;
-            display: inline-block;
-        }
-
-        .inner-book span {
-            margin-right: 10px;
-            font-weight: bold;
-        }
-
-        .inner-book input {
-            margin: 10px;
-            padding: 5px;
-            font-size: 14px;
-        }
-
-        .book-btn a {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #ff5a5a;
+        #sign{
+            margin-left: 2rem;
+            border-radius: 4px;
+            background-color: rgba(29, 12, 104, 0.7);
+            border: 1px solid rgba(218, 208, 208, 0.3);
             color: white;
-            text-decoration: none;
-            border-radius: 5px;
-        }
-
-        .book-btn a:hover {
-            background-color: #ff7575;
-        }
-
-        /* Award Winning Hotel Section */
-        .award-winning-hotel {
-            margin: 50px 20px;
-        }
-
-        .award-winning-hotel h1 {
-            font-size: 24px;
-            margin-bottom: 20px;
-        }
-
-        .main-hotel {
+            cursor: pointer;
+            padding: 7px 17px 7px 17px;
+            font-size: 16px;
+            font-weight: 500;
+            }
+        
+         .header button:hover{
+                color: orangered;
+              }
+        .main-background{
+            background-image: url(images/bgimg.webp);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.8;
+            z-index: -1;
+            width: 100%;
+            height: 100vh;
             display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
         }
-
-        .inner-award {
-            text-align: center;
-            margin: 20px;
+        
+        
+        .book-section{
+            padding:2rem 9%;
+            height: 50vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
-
-        .inner-award img {
-            width: 200px;
-            height: 150px;
-            border-radius: 8px;
+        .inner-book{
+            width: 100%;
+            background: black;
+            display: flex;
+          flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
         }
-
-        .inner-award h2 {
-            margin-top: 10px;
-            font-size: 18px;
+        .inner-book input{
+            padding: 1rem 2rem;
+            margin: .5rem 0;
+        
         }
-
-        /* Footer */
-        footer {
-            background-color: #333;
+        .book-btn{
+            padding: 1.1rem 2rem;
+            background: var(--maincolor);
+        
+        }
+        .book-btn a{
             color: white;
-            padding: 20px;
+            font-size: 1.5rem;
+        }
+        
+        .book-section span{
+            color: white;
+            padding: 0px 6px 0px 6px;
+            font-size: 20px;
+        }
+        .main-hotel{
+            padding: 2rem 7%;
+            display: flex;
+            overflow: hidden;
+            white-space: nowrap;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        .award-winning-hotel h1{
+            color: black;
+            font-size: 40px;
             text-align: center;
+            padding: 2rem ;
         }
-
-        .que {
+        
+        .inner-award{
+            flex: 1 1 300px;
+        }
+        .inner-award h2{
+            text-align: center;
+            font-size: 30px;
+            padding: 1rem;
+        }
+        
+        .inner-award img{
+            width: 100%;
+        }
+        
+        .separation{
+            height: 8px;
+            background-color: rgb(32, 32, 32);
+        }
+        
+        footer{
+            color: black;
+            max-width: 89vw;
+            margin: auto;
+            padding: 34px;
+        }
+        
+        footer .que{
+            padding: 44px 0;
             font-size: 14px;
-            margin-bottom: 10px;
         }
-    </style>
+        
+        .footer{
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            color: black;
+        }
+        
+        .footer a{
+            font-size: 18px;    
+            color: black;
+        }
+        .ftitem{
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .footer .ftitem a:hover{
+            color: orangered;
+         }
+        
+         
+            </style>
 </head>
 <body>
 {% block content %}
