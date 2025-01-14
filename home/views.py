@@ -12,11 +12,11 @@ def login_page(request):
 def register_page(request):
     if request.method=="POST":
         first_name=request.POST.get('FirstName')
-        last_name=request.POST.get('Lastname')
+        last_name=request.POST.get('LastName')
         username_=request.POST.get('username')
         email_=request.POST.get('email')
         if(request.POST.get('password1')==request.POST.get('password2')):
-            if(User.objects.filter(username=username_).exists):
+            if(User.objects.filter(username=username_).exists()):
                 messages.info(request,'Username exists')
                 return render(request,'signin.html')
             elif(User.objects.filter(email=email_).exists()): 
@@ -26,6 +26,6 @@ def register_page(request):
                 user=User.objects.create_user(username=username_,email=email_,password=request.POST.get('password1'),first_name=first_name,last_name=last_name)
                 user.save()
                 messages.info(request,'User created')
-                return render(request,'home.html')
+                return redirect('/')
             
     return render(request,'signin.html')
