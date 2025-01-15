@@ -6,7 +6,16 @@ def home(request):
     return render(request,'home.html')
 
 def login_page(request):
-    
+    if request.method=="POST":
+        user_name_=request.POST.get('username')
+        user_=auth.authenticate(username=user_name_,password=request.POST.get('password'))
+        if(user_ is not None):
+            auth.login(request,user_)
+            messages.info(request,"successfully logedin")
+            return redirect('/')
+        else:
+            messages.info(request,"Invalid Username or Password")
+            return render(request,'login.html')
     return render(request,'login.html')
 
 def register_page(request):
@@ -25,6 +34,8 @@ def register_page(request):
             else:
                 user=User.objects.create_user(username=username_,email=email_,password=request.POST.get('password1'),first_name=first_name,last_name=last_name)
                 user.save()
+                user_=auth.authenticate(username=username_,password=request.POST.get('password2'))
+                auth.login(request,user_)
                 messages.info(request,'User created')
                 return redirect('/')
             
