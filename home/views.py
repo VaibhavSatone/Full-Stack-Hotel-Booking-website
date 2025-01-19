@@ -1,9 +1,13 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.models import User,auth
 from django.contrib import messages
+from .models import (Amenities,Hotel)
 # Create your views here.
 def home(request):
-    return render(request,'home.html')
+    Amenities_obj=Amenities.objects.all()
+    Hotel_obj=Hotel.objects.all()
+    context={'amenities_obj': Amenities_obj,'hotel_obj':Hotel_obj}
+    return render(request,'home.html',context)
 
 def login_page(request):
     if request.method=="POST":

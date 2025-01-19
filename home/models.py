@@ -13,7 +13,7 @@ class BaseModel(models.Model):
 class Amenities(BaseModel):
     amenity_name=models.CharField(max_length=200)
     def __str__(self):
-        return super().amenity_name
+        return self.amenity_name
 
 class Hotel(BaseModel):
     hotel_name=models.CharField(max_length=200)
