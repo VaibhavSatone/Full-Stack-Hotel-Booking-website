@@ -10,33 +10,47 @@
         <a href="{% static 'contact.html' %}">contact</a>
     </nav>
     <div class="inline">
-        <div class="drop">
-            <button class="btn">English</button>
-            <div class="content">
-                <a href="#">Hindi</a>
-            </div>
-        </div>
-        <button id="sign"><a href="Register">Sign Up</button>
+        {% if user.is_authenticated %}
+        <H3 style="font-size:18px;
+        padding:10px;">Hello {{user.first_name}}</li>
+        <button id="sign"><a href="{% url 'logout' %}" style="color:white;">LogOut</a></button>
+        {% else %}  
+        
+        <button id="sign"><a href="Register" style="color:white;">Sign Up</button>
+        {% endif %}
+        
     </div>
 </header>
+    
+<div class="main-background">
     {% if messages %}
                 <div>
                     {% for message in messages %}
-                        <div style="border: 1px solid #ccc; padding: 10px; background-color: #f9f9f9; margin-bottom: 15px;">
+                        <div style="border: 1px solid #ccc;
+                        color:black;
+                        font-size:15px; padding: 10px; background-color: #f9f9f9; margin-bottom: 15px;">
                             <strong>{{ message }}</strong>
                         </div>
                     {% endfor %}
                 </div>
                 
         {% endif %}
-<div class="main-background">
     <div class="book-section">
         <div class="inner-book">
             <span>From</span>
             <input type="date">
             <span>To</span>
             <input type="date">
+            <label for="languages">Amenities:</label>
+            <select class="form-control" multiple>
+              <option value="">Choose</option>
+              {% for i in amenities_obj %}
+              <option value="{{i.amenity_name}}">{{i.amenity_name}}</option>
+              {% endfor %}
+             
+            </select>
             <input type="text" placeholder="Choose no. of rooms">
+            
             <div class="book-btn">
                 <a href="{% static 'city.html' %}">Book Now</a>
             </div>

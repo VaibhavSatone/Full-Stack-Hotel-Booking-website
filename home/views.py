@@ -9,13 +9,18 @@ def home(request):
     context={'amenities_obj': Amenities_obj,'hotel_obj':Hotel_obj}
     return render(request,'home.html',context)
 
+def logout_page(request):
+    auth.logout(request)
+    messages.info(request, "Successfully logged out")
+    return redirect('/')
+
 def login_page(request):
     if request.method=="POST":
         user_name_=request.POST.get('username')
         user_=auth.authenticate(username=user_name_,password=request.POST.get('password'))
         if(user_ is not None):
             auth.login(request,user_)
-            messages.info(request,"successfully logedin")
+            messages.info(request,"successfully logged in")
             return redirect('/')
         else:
             messages.info(request,"Invalid Username or Password")
