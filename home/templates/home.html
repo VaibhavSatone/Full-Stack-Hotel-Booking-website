@@ -41,7 +41,7 @@
             <input type="date">
             <span>To</span>
             <input type="date">
-            <label for="languages">Amenities:</label>
+            <label for="languages" style="font-size:20px;padding:10px ;color:white;">Amenities</label>
             <select class="form-control" multiple>
               <option value="">Choose</option>
               {% for i in amenities_obj %}
@@ -49,7 +49,7 @@
               {% endfor %}
              
             </select>
-            <input type="text" placeholder="Choose no. of rooms">
+            <input type="text" placeholder="Choose no. of rooms" style="margin:10px">
             
             <div class="book-btn">
                 <a href="{% static 'city.html' %}">Book Now</a>
