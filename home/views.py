@@ -9,6 +9,22 @@ def home(request):
     context={'amenities_obj': Amenities_obj,'hotel_obj':Hotel_obj}
     return render(request,'home.html',context)
 
+def search_page(request):
+    Amenities_obj=Amenities.objects.all()
+    Hotel_obj=Hotel.objects.all()
+    sort_by=request.GET.get("sort_by")
+    if sort_by:
+        if(sort_by=='price-asc'):
+            Hotel_obj=Hotel_obj.order_by('hotel_price')
+        elif(sort_by=='price-desc'):
+            Hotel_obj=Hotel_obj.order_by('-hotel_price')
+        elif(sort_by=='rating-asc'):
+            Hotel_obj=Hotel_obj.order_by('hotel_rating')
+        elif(sort_by=='rating-desc'):
+            Hotel_obj=Hotel_obj.order_by('-hotel_rating')
+    context={'amenities_obj': Amenities_obj,'hotel_obj':Hotel_obj,'sort_by':sort_by}
+    return render(request,"city.html",context)
+
 def logout_page(request):
     auth.logout(request)
     messages.info(request, "Successfully logged out")

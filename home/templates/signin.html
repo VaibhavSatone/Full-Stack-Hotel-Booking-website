@@ -1,10 +1,12 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign-Up Form</title>
 <style>
+    
 
     :root{
         --maincolor:#0000ff;
@@ -114,7 +116,8 @@
                 height: 100vh;
                 background-color: #f4f4f4;
                 margin: 0;
-                background-image: url(images/bgimg.webp);
+                background-image: url("{% static 'images/bgimg.webp' %}");
+
             }
             .sign-in-form {
                 background-color: #fff;
@@ -216,9 +219,9 @@
 
         <button type="submit" value='submit' >Sign Up</button>
         <span>Or</span>
-        <button type="button" id="log in"><a href="login" style="color:white;">Log In</a></button>
+        <button type="button" id="log in"><a href="login" style="color:white; ">Log In</a></button>
     </form>
-    <script src="lodg.js"></script>
+    
 
 </body>
 </html>

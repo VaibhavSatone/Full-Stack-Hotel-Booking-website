@@ -2,18 +2,19 @@
 {% load static %}
 {% block content %}
 <header class="header">
-    <a href="#" id="logo"><img src="{% static 'logo.jpg ' %}" alt="HostHarbor Logo"></a>
+    <a href="#" id="logo"><img src="{% static 'images/logo.jpg' %}" alt="HostHarbor Logo"></a>
     <nav class="navbar">
         <a href="{% url 'home' %}">home</a>
         <a href="{% static   'bookings.html' %}">bookings</a>
-        <a href="{% static 'city.html' %}">city</a>
+        <a href="search">search</a>
         <a href="{% static 'contact.html' %}">contact</a>
     </nav>
     <div class="inline">
         {% if user.is_authenticated %}
+        
         <H3 style="font-size:18px;
         padding:10px;">Hello {{user.first_name}}</li>
-        <button id="sign"><a href="{% url 'logout' %}" style="color:white;">LogOut</a></button>
+        <button id="sign"><a href="{% url 'logout' %}" style="color:white;text-decoration:none">LogOut</a></button>
         {% else %}  
         
         <button id="sign"><a href="Register" style="color:white;">Sign Up</button>
@@ -22,7 +23,7 @@
     </div>
 </header>
     
-<div class="main-background">
+<div class="main-background" style="background: url('{% static "images/bgimg.webp" %}') no-repeat center center; background-size: cover; height: 100vh; display: flex; justify-content: center; align-items: center;">
     {% if messages %}
                 <div>
                     {% for message in messages %}
@@ -42,7 +43,7 @@
             <span>To</span>
             <input type="date">
             <label for="languages" style="font-size:20px;padding:10px ;color:white;">Amenities</label>
-            <select class="form-control" multiple>
+            <select class="form-control" multiple style="width:115px ">
               <option value="">Choose</option>
               {% for i in amenities_obj %}
               <option value="{{i.amenity_name}}">{{i.amenity_name}}</option>
@@ -52,7 +53,7 @@
             <input type="text" placeholder="Choose no. of rooms" style="margin:10px">
             
             <div class="book-btn">
-                <a href="{% static 'city.html' %}">Book Now</a>
+                <a href="search" style=" text-decoration: none;">Book Now</a>
             </div>
         </div>
     </div>
@@ -62,7 +63,7 @@
     <h1>Available in Multiple Cities</h1>
     <div class="main-hotel">
         <div class="inner-award">
-            <img src="{% static 'static/images/images/mumbai.webp' %}" alt="Mumbai">
+            <img src="{% static 'images/mumbai.webp' %}" alt="Mumbai">
             <h2>Mumbai</h2>
         </div>
         <div class="inner-award">

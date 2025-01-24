@@ -18,7 +18,9 @@ class Amenities(BaseModel):
 class Hotel(BaseModel):
     hotel_name=models.CharField(max_length=200)
     hotel_price=models.IntegerField()
+    hotel_rating=models.FloatField(default=0)
     description=models.TextField()
+    hotel_place=models.CharField(max_length=200,default="")
     amenities=models.ManyToManyField(Amenities)
     room_count=models.IntegerField(default=10)
     def __str__(self):
