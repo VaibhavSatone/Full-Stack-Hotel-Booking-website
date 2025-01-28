@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.models import User,auth
 from django.contrib import messages
+from django.db.models import Q
 from .models import (Amenities,Hotel)
 # Create your views here.
 def home(request):
@@ -13,6 +14,7 @@ def search_page(request):
     Amenities_obj=Amenities.objects.all()
     Hotel_obj=Hotel.objects.all()
     sort_by=request.GET.get("sort_by")
+    amenities=request.GET.getlist("amenities")
     if sort_by:
         if(sort_by=='price-asc'):
             Hotel_obj=Hotel_obj.order_by('hotel_price')
@@ -22,7 +24,11 @@ def search_page(request):
             Hotel_obj=Hotel_obj.order_by('hotel_rating')
         elif(sort_by=='rating-desc'):
             Hotel_obj=Hotel_obj.order_by('-hotel_rating')
-    context={'amenities_obj': Amenities_obj,'hotel_obj':Hotel_obj,'sort_by':sort_by}
+    
+    search_hotel=request.GET.get("Search")
+    if(search_hotel):
+        Hotel_obj=Hotel_obj.filter(Q(hotel_name__icontains=search_hotel) | Q(description__icontains=search_hotel))
+    context={'amenities_obj': Amenities_obj,'hotel_obj':Hotel_obj,'sort_by':sort_by,"search_bar":search_hotel}
     return render(request,"city.html",context)
 
 def logout_page(request):

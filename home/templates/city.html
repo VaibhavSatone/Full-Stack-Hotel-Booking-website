@@ -300,7 +300,7 @@
             <!-- Search Bar -->
             <div class="d-flex align-items-center">
                 <label for="searchInput" class="form-label me-2" style="font-size: 20px;">Search:</label>
-                <input id="searchInput" name="search" class="form-control me-2" type="search" placeholder="Search" aria-label="Search" style="width: 200px;">
+                <input {% if search_bar %} value={{search_bar}}  {% endif %} name="Search" class="form-control me-2" type="search" placeholder="Search" aria-label="Search" style="width: 200px;">
                 <button class="btn btn-outline-success" type="submit">Search</button>
             </div>
         </form>
