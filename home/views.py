@@ -14,7 +14,8 @@ def search_page(request):
     Amenities_obj=Amenities.objects.all()
     Hotel_obj=Hotel.objects.all()
     sort_by=request.GET.get("sort_by")
-    amenities=request.GET.getlist("amenities")
+    search_hotel=request.GET.get("Search")
+    amenities_list=request.GET.getlist("amenities")
     if sort_by:
         if(sort_by=='price-asc'):
             Hotel_obj=Hotel_obj.order_by('hotel_price')
@@ -24,11 +25,13 @@ def search_page(request):
             Hotel_obj=Hotel_obj.order_by('hotel_rating')
         elif(sort_by=='rating-desc'):
             Hotel_obj=Hotel_obj.order_by('-hotel_rating')
-    
-    search_hotel=request.GET.get("Search")
+
     if(search_hotel):
         Hotel_obj=Hotel_obj.filter(Q(hotel_name__icontains=search_hotel) | Q(description__icontains=search_hotel))
-    context={'amenities_obj': Amenities_obj,'hotel_obj':Hotel_obj,'sort_by':sort_by,"search_bar":search_hotel}
+    if(amenities_list!=['default']):
+        for amenity in amenities_list:
+            Hotel_obj = Hotel_obj.filter(amenities__amenity_name=amenity)
+    context={'amenities_obj': Amenities_obj,'hotel_obj':Hotel_obj,'sort_by':sort_by,"search_bar":search_hotel,'amenities_list':amenities_list}
     return render(request,"city.html",context)
 
 def logout_page(request):

@@ -287,9 +287,9 @@
             <div class="d-flex align-items-center">
                 <label for="languages"  class="form-label me-2" style="font-size: 20px; color: black;">Amenities:</label>
                 <select class="form-control" name ="amenities" id="languages" multiple style="width: 200px;" size="{{ amenities_obj|length }}">
-                    <option value="">Choose</option>
+                    <option value="default">Choose</option>
                     {% for i in amenities_obj %}
-                    <option value="{{i.amenity_name}}">{{i.amenity_name}}</option>
+                    <option {% if i.amenity_name in amenities_list %} selected {% endif %} value="{{i.amenity_name}}">{{i.amenity_name}}</option>
                     {% endfor %}
                 </select>
             </div>
