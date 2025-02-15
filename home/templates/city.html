@@ -315,7 +315,6 @@
             </div>
             
             <div class="details-section">
-                
                 <h3>{{obj.hotel_name}}</h3>
                 <p>{{obj.hotel_place}}</p>
                 <p>{{obj.description|truncatechars:100}}</p>
@@ -334,7 +333,7 @@
                     
                 </div>
                 <div class="buttons">
-                    <button>Book Now</button>
+                    <button ><a href="hotel_detail/{{obj.uid}}" style="text-decoration: none; color:white; font-size:12px ">Book Now</a></button>
                 </div>
             </div>
         </div>

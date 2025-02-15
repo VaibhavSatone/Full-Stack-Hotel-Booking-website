@@ -17,7 +17,7 @@
         <button id="sign"><a href="{% url 'logout' %}" style="color:white;text-decoration:none">LogOut</a></button>
         {% else %}  
         
-        <button id="sign"><a href="Register" style="color:white;">Sign Up</button>
+    <button id="sign"><a href="{% url 'register_page' %}" style="color:white;">Sign Up</button>
         {% endif %}
         
     </div>
@@ -43,7 +43,7 @@
             <span>To</span>
             <input type="date">
             <label for="languages" style="font-size:20px;padding:10px ;color:white;">Amenities</label>
-            <select class="form-control" multiple style="width:115px ">
+            <select class="form-control" multiple style="width:130px ">
               <option value="">Choose</option>
               {% for i in amenities_obj %}
               <option value="{{i.amenity_name}}">{{i.amenity_name}}</option>

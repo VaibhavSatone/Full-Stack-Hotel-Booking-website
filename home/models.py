@@ -9,7 +9,7 @@ class BaseModel(models.Model):
     updated_at=models.DateField(auto_now_add=True)
     class Meta:
         abstract=True
-
+    
 class Amenities(BaseModel):
     amenity_name=models.CharField(max_length=200)
     def __str__(self):

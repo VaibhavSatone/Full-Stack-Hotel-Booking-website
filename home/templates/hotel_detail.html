@@ -51,6 +51,7 @@
         }
 
         .header .navbar a {
+            text-decoration:none;
             font-size: 1.7rem;
             margin-left: 1.5rem;
             color: var(--maincolor);
@@ -159,12 +160,13 @@
     </style>
 </head>
 <body>
+    {% load static %}
     <header class="header">
-        <a href="#" id="logo"><img src="images/logo.jpg" alt="Luxury Grand Hotel"></a>
+        <a href="{% url 'home' %}" id="logo"><img src="{% static 'images/logo.jpg  '%}" alt=""></a>
         <nav class="navbar">
-            <a href="lodge.html">Home</a>
+            <a href="/">Home</a>
             <a href="bookings.html">Bookings</a>
-            <a href="city.html">City</a>
+            <a href="{% url 'search_page'%}">City</a>
             <a href="contact.html">Contact</a>
         </nav>
         <div class="inline">
@@ -179,52 +181,66 @@
             </div>
         </div>
     </header>
-
     <!-- Hero Section -->
     <div class="hero">
-        <h1>Welcome to Luxury Grand Hotel</h1>
+        <img src="{% static 'images/chennai.jpg'%}" alt="lund">
     </div>
+    
+    
+    
+    
 
     <!-- Hotel Details -->
     <div class="container hotel-info">
+        {% if messages %}
+        <div>
+            {% for message in messages %}
+                <div style="border: 1px solid #ccc;
+                color:black;
+                font-size:15px; padding: 10px; background-color: #f9f9f9; margin-bottom: 15px;">
+                    <strong>{{ message }}</strong>
+                </div>
+            {% endfor %}
+           
+        </div>
+        {% endif %}
         <div class="row">
             <div class="col-md-8">
+                <h1>{{hotel_obj.hotel_name}}<h1>
                 <h2>About the Hotel</h2>
-                <p>Experience world-class luxury with top-notch services, breathtaking views, and a relaxing ambiance. The Luxury Grand Hotel offers an unforgettable stay with modern amenities and exceptional hospitality.</p>
-
+                <p>{{hotel_obj.description}}</p>
                 <h3>Amenities</h3>
                 <ul class="amenities">
-                    <li>🌊 Beach View</li>
-                    <li>🏊 Swimming Pool</li>
-                    <li>🍽️ Restaurant</li>
-                    <li>🏋️ Gym</li>
-                    <li>🚗 Free Parking</li>
-                    <li>📶 Free WiFi</li>
-                    <li>🛏️ Luxury Suites</li>
+                    {% for i in hotel_obj.amenities.all %}
+                    <li>{{i}}</li>
+                    
+                {% endfor %}
                 </ul>
 
                 <h3>Price</h3>
-                <p><strong>Starting at: $199/night</strong></p>
+                <p><strong>₹{{hotel_obj.hotel_price}}/night</strong></p>
 
-                <form action="book.html" method="get">
+                <form method="POST">
+                    {% csrf_token %}
                     <!-- Date Selection -->
                     <div class="form-group">
-                        <label for="check-in">Check-in Date</label>
-                        <input type="date" id="check-in" name="check-in" class="form-control" style="height:40px"required>
+                        <label for="check-in" >Check-in Date</label>
+                        <input type="date" id="check-in" name="check-in" class="form-control" style="height:40px" required>
                     </div>
                     
                     <div class="form-group">
-                        <label for="check-out">Check-out Date</label>
+                        <label for="check-out" >Check-out Date</label>
                         <input type="date" id="check-out" name="check-out" class="form-control" required>
                     </div>
 
                     <!-- Room Selection -->
                     <div class="form-group">
-                        <label for="rooms">Number of Rooms</label>
+                        <label for="rooms" >Number of Rooms</label>
                         <input type="number" id="rooms" name="rooms" class="form-control" min="1" max="10" required>
                     </div>
-
-                    <a href="book.html" class="btn btn-lg btn-success book-btn">Book Now</a>
+                    <button type="submit" value='submit' 
+                    class="btn btn-lg btn-success book-btn" style="margin-left:01px">Book Now</button>
+                    
                 </form>
             </div>
             <div class="col-md-4">
